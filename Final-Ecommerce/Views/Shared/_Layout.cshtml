@@ -1,0 +1,144 @@
+﻿@*<!DOCTYPE html>
+    <html>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Nombre de aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </div>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+            </footer>
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+    </body>
+    </html>*@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecommerce 2019 - @ViewBag.Title</title>
+    @*@Styles.Render("~/Content/css")*@
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/MyStyles.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet"/>
+    <link href="~/Content/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    @*<link href="~/Content/font-awesome.min.css" rel="stylesheet" type="text/css" />*@
+
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div style="background-image: url('../../images/fondo-e.jpg');">
+        <div class="top-bar d-lg-block">
+            <div class="container">
+                <div class="float-left">
+                    <i class="fa fa-phone"></i> Llámanos: +52 1 722 999 9999
+                </div>
+                <div class="float-right">
+                    <div class="login d-lg-block">
+                        <span class="customer-name">
+                            <i class="fa fa-user-circle-o"></i>
+                        </span>
+                        @Html.Partial("_LoginPartial")
+                        @*@Html.ActionLink("Ingresar ", "Login", "Login")|@Html.ActionLink(" Registrarse", "Registrar", "Registro")*@
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row no-gutters" style=" padding: 20px 0;">
+                <div class="col-2 d-lg-none nav-icon-content">
+                    <div class="nav-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-8">
+                    <span style="background-color: transparent; color: white; font-size: 6rem; margin: auto;">LOGO</span>
+                    @*<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Logos.svg/1200px-Logos.svg.png" alt="LOGO" width="30%"/>*@
+                </div>
+                @*<div class="col-lg-6 col-2" style="margin: 30px 0 !important;">
+
+                        <div class=" cart float-right">
+                            <a href="#" title="Ver/Editar Carro">
+                                <i class="fa fa-shopping-cart"></i>
+                                <span class="cart-size">0</span>
+                                <div class="order-total">$0.00</div>
+                            </a>
+                        </div>
+                    </div>*@
+            </div>
+        </div>
+
+        <div class="navbar navbar-default" id="nav-home">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @*@Html.ActionLink("Nombre de aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                        @*<li>@Html.ActionLink("Productos", "Productos", "Productos")</li>*@
+                        <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div>
+            @RenderBody()
+        </div>
+        <footer class="footer">
+            <hr />
+            <span>&copy; @DateTime.Now.Year - Ecommerce</span>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>
+
