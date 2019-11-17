@@ -1,5 +1,4 @@
-﻿@using Final_Ecommerce.Models
-@model LoginViewModel
+﻿@model Final_Ecommerce.Models.LoginViewModel
 @{
     ViewBag.Title = "Iniciar Sesión";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -21,7 +20,7 @@
             <div class="col-md-6 col-md-offset-3">
                 <div class="block mb-4">
                     <div class="block-inside">
-                        <form action="#" accept-charset="UTF-8" method="post" id="login">
+                        @*<form action="#" accept-charset="UTF-8" method="post" id="login">*@
                             <div id="credentials">
                                 <div class="row">
                                     <div class="col-md-10 col-md-offset-1">
@@ -63,7 +62,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                        @*</form>*@
                     </div>
                 </div>
                 <div class="block text-center">

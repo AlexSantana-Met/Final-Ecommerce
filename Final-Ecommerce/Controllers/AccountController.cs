@@ -9,7 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Final_Ecommerce.Models;
-using Ecommerce_Shop.Repository;
+using Final_Ecommerce.Repository;
 using Final_Ecommerce.Models.DAL;
 
 namespace Final_Ecommerce.Controllers
@@ -86,12 +86,8 @@ namespace Final_Ecommerce.Controllers
                     Usuarios usr = _unitOfWork.GetRepositoryInstance<Usuarios>().GetFirstOrDefaultByParameter(i => i.correo == model.Email);
                     if (usr != null)
                     {
-                        usr.nombre = "";
                         usr.pass = "";
-                        usr.apellido_materno = "";
-                        usr.apellido_paterno = "";
                         usr.fecha_nacimiento = null;
-                        usr.telefono = "";
                         Session["usr"] = usr;
                     }
                     return RedirectToLocal(returnUrl);

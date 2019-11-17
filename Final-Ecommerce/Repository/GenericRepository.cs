@@ -6,7 +6,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Web;
 
-namespace Ecommerce_Shop.Repository
+namespace Final_Ecommerce.Repository
 {
     public class GenericRepository<Entidad> : IRepository<Entidad> where Entidad : class
     {
@@ -117,5 +117,14 @@ namespace Ecommerce_Shop.Repository
 
         }
 
+        public Entidad GetLastRecord()
+        {
+            List<Entidad> e = GetAllRecords().ToList();
+            if (e.Count() != 0)
+            {
+                return GetAllRecords().Last();
+            }
+            return null;
+        }
     }
 }

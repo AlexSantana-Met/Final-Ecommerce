@@ -11,7 +11,7 @@ namespace Final_Ecommerce.Models.DAL
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Productos
     {
         public int id { get; set; }
@@ -27,4 +27,24 @@ namespace Final_Ecommerce.Models.DAL
         public string img { get; set; }
         public Nullable<decimal> calificacion { get; set; }
     }
+
+    public class Carrito
+    {
+        public int Id { get; set; }
+        public int Cantidad { get; set; }
+    }
+
+    public class ProductoVenta
+    {
+        public Productos Producto { get; set; }
+        public Carrito Carrito { get; set; }
+
+        public ProductoVenta()
+        {
+            Producto = new Productos();
+            Carrito = new Carrito();
+        }
+
+    }
+
 }

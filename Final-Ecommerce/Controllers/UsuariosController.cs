@@ -7,7 +7,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using Ecommerce_Shop.Repository;
+using Final_Ecommerce.Repository;
 using Final_Ecommerce.Models.DAL;
 using System.Threading.Tasks;
 
@@ -21,6 +21,7 @@ namespace Final_Ecommerce.Controllers
         private ApplicationUserManager _userManager;
 
         // GET: Usuarios
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();
@@ -53,14 +54,16 @@ namespace Final_Ecommerce.Controllers
                     newUser.correo = model.correo;
                     newUser.username = model.username;
                     newUser.role_id = 1;
-                    Session["usr"] = newUser;
-
+                    newUser.telefono = model.telefono;
                     newUser.nombre = model.nombre;
                     newUser.apellido_paterno = model.apellido_paterno;
                     newUser.apellido_materno = model.apellido_materno;
+
+                    Session["usr"] = newUser;
+
                     newUser.pass = model.pass;
                     newUser.status = 1;
-                    newUser.telefono = model.telefono;
+                    
 
                     newUser.fecha_nacimiento = model.fecha_nacimiento;
                     _unitOfWork.GetRepositoryInstance<Usuarios>().Add(newUser);
