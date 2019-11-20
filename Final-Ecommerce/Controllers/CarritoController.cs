@@ -16,11 +16,13 @@ namespace Final_Ecommerce.Controllers
         public GenericUnitToWork _unitOfWork = new GenericUnitToWork();
 
         // GET: Carrito
+        [AllowAnonymous]
         public ActionResult Carrito()
         {
             return View();
         }
 
+        [AllowAnonymous]
         public ActionResult AgregarProducto(int id)
         {
             CarritoModel item = new CarritoModel();
@@ -75,6 +77,7 @@ namespace Final_Ecommerce.Controllers
             return -1;
         }
 
+        [AllowAnonymous]
         public ActionResult DropProducto(int id)
         {
             List<CarritoModel> carrito = (List<CarritoModel>)Session["carrito"];

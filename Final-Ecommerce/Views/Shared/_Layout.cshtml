@@ -47,8 +47,8 @@
                     <span style="background-color: transparent; color: white; font-size: 6rem; margin: auto;">LOGO</span>
                     @*<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Logos.svg/1200px-Logos.svg.png" alt="LOGO" width="30%"/>*@
                 </div>
-                @if (Request.IsAuthenticated)
-                {
+                @*if (Request.IsAuthenticated)*@
+                @{
                     int noP = 0;
                     decimal total = 0;
                     if (Session["carrito"] != null)

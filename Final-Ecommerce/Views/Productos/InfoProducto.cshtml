@@ -95,8 +95,8 @@
                         <div class="form-group row">
                             <label class="col-3 form-control-label"></label>
                             <br />
-                            @if (Request.IsAuthenticated)
-                            {
+                            @*@if (Request.IsAuthenticated)
+                            {*@
                                 @*<div class="col-md-4 col-md-offset-2">
                                         <div class="quantity">
                                             @Html.TextBoxFor(m => m.Carrito.Cantidad, new { @class = "text form-control" })
@@ -113,12 +113,12 @@
                                         </button>
                                     </div>*@
                                 </div>
-                            }
+                            @*}
                             else
                             {
                                 <span style="font-size: 1.5rem; font-weight: bold;">No ha iniciado sesión</span>
                                 <p>Se necesita un inicio de sesión para comprar el producto.</p>
-                            }
+                            }*@
                         </div>
                         @Html.ActionLink("<< Continuar comprando", "AllProductos", "Productos")
                     </div>
