@@ -7,10 +7,29 @@
         @Html.AntiForgeryToken()
         if (Session["usr"] != null)
         {
-            @Html.ActionLink("Bienvenido(a) " + ((Usuarios)Session["usr"]).username + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            Usuarios usr = (Usuarios)Session["usr"];
+            <span>Bienvenido(a)<span>@usr.username</span>!</span>
         }
         <span>|</span>
         <a href="javascript:document.getElementById('logoutForm').submit()"> Cerrar sesión</a>
+        @*@Html.AntiForgeryToken()
+            if (Session["usr"] != null)
+            {
+                Usuarios usr = (Usuarios)Session["usr"];
+                @Html.ActionLink("Bienvenido(a) " + ((Usuarios)Session["usr"]).username + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                <div class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Bienvenido(a)<span>@usr.username</span>!<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("Historial de Compras", "HistorialCompras", "Compras")</li>
+                    </ul>
+                    <span>|</span>
+                    <a href="javascript:document.getElementById('logoutForm').submit()"> Cerrar sesión</a>
+                </div>
+            }
+            else
+            {
+                <a href="javascript:document.getElementById('logoutForm').submit()"> Cerrar sesión</a>
+            }*@
     }
 }
 else

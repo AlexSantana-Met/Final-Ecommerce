@@ -51,8 +51,8 @@
     <Property Name="id_producto" Type="int" Nullable="false" />
     <Property Name="id_venta" Type="int" Nullable="false" />
     <Property Name="cantidad" Type="int" Nullable="false" />
-    <Property Name="precio_compra" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-    <Property Name="precio_venta" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="precio_compra" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="precio_venta" Type="decimal" Precision="10" Scale="2" Nullable="false" />
     <Property Name="stat" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Productos">
@@ -65,11 +65,11 @@
     <Property Name="id_categoria" Type="int" Nullable="false" />
     <Property Name="cantidad" Type="int" Nullable="false" />
     <Property Name="id_proveedor" Type="int" Nullable="false" />
-    <Property Name="precio_compra" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-    <Property Name="precio_venta" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="precio_compra" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="precio_venta" Type="decimal" Precision="10" Scale="2" Nullable="false" />
     <Property Name="stock" Type="int" Nullable="false" />
     <Property Name="stat" Type="int" Nullable="false" />
-    <Property Name="img" Type="varchar" MaxLength="1" />
+    <Property Name="img" Type="varchar" MaxLength="30" />
     <Property Name="calificacion" Type="decimal" Precision="18" Scale="0" />
   </EntityType>
   <EntityType Name="Proveedores">
@@ -90,7 +90,7 @@
     </Key>
     <Property Name="id" Type="int" Nullable="false" />
     <Property Name="nombre" Type="varchar" MaxLength="20" Nullable="false" />
-    <Property Name="descripcion" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="stat" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Tipo_Pago">
@@ -110,7 +110,7 @@
     <Property Name="nombre" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="apellido_paterno" Type="varchar" MaxLength="15" Nullable="false" />
     <Property Name="apellido_materno" Type="varchar" MaxLength="15" Nullable="false" />
-    <Property Name="correo" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="correo" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="pass" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="status" Type="int" Nullable="false" />
     <Property Name="role_id" Type="int" Nullable="false" />
@@ -125,9 +125,9 @@
     <Property Name="id" Type="int" Nullable="false" />
     <Property Name="fecha" Type="date" Nullable="false" />
     <Property Name="id_usuario" Type="int" Nullable="false" />
-    <Property Name="sub_total" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-    <Property Name="iva" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-    <Property Name="total" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="sub_total" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="iva" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="total" Type="decimal" Precision="10" Scale="2" Nullable="false" />
     <Property Name="id_pago" Type="int" Nullable="false" />
     <Property Name="stat" Type="decimal" Precision="18" Scale="0" Nullable="false" />
   </EntityType>

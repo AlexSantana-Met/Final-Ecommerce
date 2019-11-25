@@ -117,3 +117,5 @@ C:\Users\Alejandro\source\repos\Final-Ecommerce\Final-Ecommerce\obj\Debug\Final-
 C:\Users\Alejandro\source\repos\Final-Ecommerce\Final-Ecommerce\obj\Debug\Final-Ecommerce.csproj.CopyComplete
 C:\Users\Alejandro\source\repos\Final-Ecommerce\Final-Ecommerce\obj\Debug\Final-Ecommerce.dll
 C:\Users\Alejandro\source\repos\Final-Ecommerce\Final-Ecommerce\obj\Debug\Final-Ecommerce.pdb
+C:\Users\Alejandro\source\repos\Final-Ecommerce\Final-Ecommerce\bin\PayPal.dll
+C:\Users\Alejandro\source\repos\Final-Ecommerce\Final-Ecommerce\bin\PayPal.xml

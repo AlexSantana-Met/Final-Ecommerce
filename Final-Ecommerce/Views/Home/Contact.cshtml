@@ -43,7 +43,7 @@
                                 }
                                 else
                                 {  }*@
-                            @Html.LabelFor(m => m.nombre, new { @class = "control-label" })
+                            @Html.LabelFor(m => m.nombre, new { @class = "control-label", @style = "font-weight: bold;" })
                             @Html.TextBoxFor(m => m.nombre, new { @class = "text form-control" })
                             @Html.ValidationMessageFor(m => m.nombre, "", new { @class = "text-danger" })
                         </div>
@@ -59,7 +59,7 @@
                                 {
 
                                 }*@
-                            @Html.LabelFor(m => m.email, new { @class = "control-label" })
+                            @Html.LabelFor(m => m.email, new { @class = "control-label", @style = "font-weight: bold;" })
                             @Html.TextBoxFor(m => m.email, new { @class = "text form-control" })
                             @Html.ValidationMessageFor(m => m.email, "", new { @class = "text-danger" })
                         </div>
@@ -67,14 +67,14 @@
                     <div class="form-group">
                         <div id="contactpage_phone" class="field">
                             @*@if (Request.IsAuthenticated)
-                            {
-                                Model.telefono = ((Usuarios)Session["usr"]).telefono != "" ? ((Usuarios)Session["usr"]).telefono : "";
-                                @Html.TextBoxFor(m => m.nombre, new { @class = "text form-control" })
-                            }
-                            else
-                            {
-                            }*@
-                            @Html.LabelFor(m => m.telefono, new { @class = "control-label" })
+                                {
+                                    Model.telefono = ((Usuarios)Session["usr"]).telefono != "" ? ((Usuarios)Session["usr"]).telefono : "";
+                                    @Html.TextBoxFor(m => m.nombre, new { @class = "text form-control" })
+                                }
+                                else
+                                {
+                                }*@
+                            @Html.LabelFor(m => m.telefono, new { @class = "control-label", @style = "font-weight: bold;" })
                             @Html.TextBoxFor(m => m.telefono, new { @class = "text form-control" })
                             @Html.ValidationMessageFor(m => m.telefono, "", new { @class = "text-danger" })
                         </div>
@@ -83,7 +83,7 @@
                 <div class="col-sm-5 col-sm-offset-1 col-12">
                     <div class="form-group">
                         <div id="contactpage_message">
-                            @Html.LabelFor(m => m.mensaje, new { @class = "control-label" })
+                            @Html.LabelFor(m => m.mensaje, new { @class = "control-label", @style = "font-weight: bold;" })
                             @Html.TextAreaFor(m => m.mensaje, new { @class = "text form-control" })
                             @Html.ValidationMessageFor(m => m.mensaje, "", new { @class = "text-danger" })
                         </div>

@@ -22,7 +22,15 @@ namespace Final_Ecommerce.Repository
         public void Add(Entidad entity)
         {
             _dbSet.Add(entity);
-            _DBEntity.SaveChanges();
+            try
+            {
+                _DBEntity.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                Console.Write("");
+            }
+            
         }
 
         public int GetAllRecordCount()
@@ -96,6 +104,7 @@ namespace Final_Ecommerce.Repository
         {
             _dbSet.Attach(entity);
             _DBEntity.Entry(entity).State = EntityState.Modified;
+            _DBEntity.SaveChanges();
         }
 
         public void UpdateByWhere(Expression<Func<Entidad, bool>> wherePredict, Action<Entidad> ForEachPredict)

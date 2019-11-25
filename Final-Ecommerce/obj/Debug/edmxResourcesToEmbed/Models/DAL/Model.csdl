@@ -51,8 +51,8 @@
     <Property Name="id_producto" Type="Int32" Nullable="false" />
     <Property Name="id_venta" Type="Int32" Nullable="false" />
     <Property Name="cantidad" Type="Int32" Nullable="false" />
-    <Property Name="precio_compra" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-    <Property Name="precio_venta" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="precio_compra" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="precio_venta" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
     <Property Name="stat" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="Productos">
@@ -65,11 +65,11 @@
     <Property Name="id_categoria" Type="Int32" Nullable="false" />
     <Property Name="cantidad" Type="Int32" Nullable="false" />
     <Property Name="id_proveedor" Type="Int32" Nullable="false" />
-    <Property Name="precio_compra" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-    <Property Name="precio_venta" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="precio_compra" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="precio_venta" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
     <Property Name="stock" Type="Int32" Nullable="false" />
     <Property Name="stat" Type="Int32" Nullable="false" />
-    <Property Name="img" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="img" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="calificacion" Type="Decimal" Precision="18" Scale="0" />
   </EntityType>
   <EntityType Name="Proveedores">
@@ -90,7 +90,7 @@
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" />
     <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="descripcion" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="stat" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="Tipo_Pago">
@@ -102,22 +102,6 @@
     <Property Name="descripcion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="status" Type="Int32" Nullable="false" />
   </EntityType>
-  <EntityType Name="Usuarios">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" />
-    <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="apellido_paterno" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="apellido_materno" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="correo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="pass" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="status" Type="Int32" Nullable="false" />
-    <Property Name="role_id" Type="Int32" Nullable="false" />
-    <Property Name="fecha_nacimiento" Type="DateTime" Precision="0" />
-    <Property Name="telefono" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
-    <Property Name="username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-  </EntityType>
   <EntityType Name="Ventas">
     <Key>
       <PropertyRef Name="id" />
@@ -125,9 +109,9 @@
     <Property Name="id" Type="Int32" Nullable="false" />
     <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="id_usuario" Type="Int32" Nullable="false" />
-    <Property Name="sub_total" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-    <Property Name="iva" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-    <Property Name="total" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="sub_total" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="iva" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="total" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
     <Property Name="id_pago" Type="Int32" Nullable="false" />
     <Property Name="stat" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
   </EntityType>
@@ -141,7 +125,23 @@
     <EntitySet Name="Proveedores" EntityType="Self.Proveedores" />
     <EntitySet Name="Roles" EntityType="Self.Roles" />
     <EntitySet Name="Tipo_Pago" EntityType="Self.Tipo_Pago" />
-    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
     <EntitySet Name="Ventas" EntityType="Self.Ventas" />
+    <EntitySet Name="Usuarios" EntityType="DBEcommerce.Usuarios" />
   </EntityContainer>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="apellido_paterno" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="apellido_materno" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="correo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="pass" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <Property Name="role_id" Type="Int32" Nullable="false" />
+    <Property Name="fecha_nacimiento" Type="DateTime" Precision="0" />
+    <Property Name="telefono" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Name="username" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

@@ -33,12 +33,13 @@ namespace Final_Ecommerce.Controllers
         [AllowAnonymous]
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            //ViewBag.Message = "Your contact page.";
 
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult Contact(ContactoModel model)
         {
             if (ModelState.IsValid)

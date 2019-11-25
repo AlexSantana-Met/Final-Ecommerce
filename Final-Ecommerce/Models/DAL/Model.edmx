@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DBEcommerce.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DBEcommerce.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Categorias">
           <Key>
             <PropertyRef Name="id" />
@@ -56,8 +56,8 @@
           <Property Name="id_producto" Type="int" Nullable="false" />
           <Property Name="id_venta" Type="int" Nullable="false" />
           <Property Name="cantidad" Type="int" Nullable="false" />
-          <Property Name="precio_compra" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="precio_venta" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="precio_compra" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="precio_venta" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="stat" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Productos">
@@ -70,11 +70,11 @@
           <Property Name="id_categoria" Type="int" Nullable="false" />
           <Property Name="cantidad" Type="int" Nullable="false" />
           <Property Name="id_proveedor" Type="int" Nullable="false" />
-          <Property Name="precio_compra" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="precio_venta" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="precio_compra" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="precio_venta" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="stock" Type="int" Nullable="false" />
           <Property Name="stat" Type="int" Nullable="false" />
-          <Property Name="img" Type="varchar" MaxLength="1" />
+          <Property Name="img" Type="varchar" MaxLength="30" />
           <Property Name="calificacion" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="Proveedores">
@@ -95,7 +95,7 @@
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="descripcion" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="stat" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Tipo_Pago">
@@ -115,7 +115,7 @@
           <Property Name="nombre" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="apellido_paterno" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="apellido_materno" Type="varchar" MaxLength="15" Nullable="false" />
-          <Property Name="correo" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="correo" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="pass" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="status" Type="int" Nullable="false" />
           <Property Name="role_id" Type="int" Nullable="false" />
@@ -130,9 +130,9 @@
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="fecha" Type="date" Nullable="false" />
           <Property Name="id_usuario" Type="int" Nullable="false" />
-          <Property Name="sub_total" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="iva" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="total" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="sub_total" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="iva" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="total" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="id_pago" Type="int" Nullable="false" />
           <Property Name="stat" Type="decimal" Precision="18" Scale="0" Nullable="false" />
         </EntityType>
@@ -149,8 +149,7 @@
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ventas" EntityType="Self.Ventas" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DBEcommerce" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -205,8 +204,8 @@
           <Property Name="id_producto" Type="Int32" Nullable="false" />
           <Property Name="id_venta" Type="Int32" Nullable="false" />
           <Property Name="cantidad" Type="Int32" Nullable="false" />
-          <Property Name="precio_compra" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="precio_venta" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="precio_compra" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="precio_venta" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="stat" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Productos">
@@ -219,11 +218,11 @@
           <Property Name="id_categoria" Type="Int32" Nullable="false" />
           <Property Name="cantidad" Type="Int32" Nullable="false" />
           <Property Name="id_proveedor" Type="Int32" Nullable="false" />
-          <Property Name="precio_compra" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="precio_venta" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="precio_compra" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="precio_venta" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="stock" Type="Int32" Nullable="false" />
           <Property Name="stat" Type="Int32" Nullable="false" />
-          <Property Name="img" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="img" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="calificacion" Type="Decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="Proveedores">
@@ -244,7 +243,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="descripcion" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="stat" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Tipo_Pago">
@@ -256,22 +255,6 @@
           <Property Name="descripcion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="status" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="Usuarios">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="apellido_paterno" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="apellido_materno" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="correo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="pass" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="status" Type="Int32" Nullable="false" />
-          <Property Name="role_id" Type="Int32" Nullable="false" />
-          <Property Name="fecha_nacimiento" Type="DateTime" Precision="0" />
-          <Property Name="telefono" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
-          <Property Name="username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
         <EntityType Name="Ventas">
           <Key>
             <PropertyRef Name="id" />
@@ -279,9 +262,9 @@
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="id_usuario" Type="Int32" Nullable="false" />
-          <Property Name="sub_total" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="iva" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="total" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="sub_total" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="iva" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="total" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="id_pago" Type="Int32" Nullable="false" />
           <Property Name="stat" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
         </EntityType>
@@ -295,9 +278,25 @@
           <EntitySet Name="Proveedores" EntityType="Self.Proveedores" />
           <EntitySet Name="Roles" EntityType="Self.Roles" />
           <EntitySet Name="Tipo_Pago" EntityType="Self.Tipo_Pago" />
-          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
           <EntitySet Name="Ventas" EntityType="Self.Ventas" />
+          <EntitySet Name="Usuarios" EntityType="DBEcommerce.Usuarios" />
         </EntityContainer>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="apellido_paterno" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="apellido_materno" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="correo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pass" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <Property Name="role_id" Type="Int32" Nullable="false" />
+          <Property Name="fecha_nacimiento" Type="DateTime" Precision="0" />
+          <Property Name="telefono" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -415,23 +414,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Usuarios">
-            <EntityTypeMapping TypeName="DBEcommerce.Usuarios">
-              <MappingFragment StoreEntitySet="Usuarios">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="apellido_paterno" ColumnName="apellido_paterno" />
-                <ScalarProperty Name="apellido_materno" ColumnName="apellido_materno" />
-                <ScalarProperty Name="correo" ColumnName="correo" />
-                <ScalarProperty Name="pass" ColumnName="pass" />
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="role_id" ColumnName="role_id" />
-                <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
-                <ScalarProperty Name="telefono" ColumnName="telefono" />
-                <ScalarProperty Name="username" ColumnName="username" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Ventas">
             <EntityTypeMapping TypeName="DBEcommerce.Ventas">
               <MappingFragment StoreEntitySet="Ventas">
@@ -443,6 +425,23 @@
                 <ScalarProperty Name="total" ColumnName="total" />
                 <ScalarProperty Name="id_pago" ColumnName="id_pago" />
                 <ScalarProperty Name="stat" ColumnName="stat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="DBEcommerce.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="pass" ColumnName="pass" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="apellido_materno" ColumnName="apellido_materno" />
+                <ScalarProperty Name="apellido_paterno" ColumnName="apellido_paterno" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

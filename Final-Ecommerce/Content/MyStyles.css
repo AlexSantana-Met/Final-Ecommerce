@@ -365,6 +365,11 @@ textarea.text {
     text-align: center;
 }
 
+h4 {
+    font-size: 3rem;
+    font-family: 'Big Shoulders Display', sans-serif !important;
+}
+
 div.login-page h1,
 div.login-page h2 {
     font-size: 4rem;
@@ -497,9 +502,10 @@ h2.product-name {
     height: 30px !important;
 }
 
-#error-message {
-
+#compras-table > tbody > tr > td > img {
+    height: 30px !important;
 }
+
 /*h1.caption-h::before,
 h2.caption-h::before {
     content: ' ';

@@ -26,10 +26,10 @@ namespace Final_Ecommerce.Controllers
         public ActionResult AgregarProducto(int id)
         {
             CarritoModel item = new CarritoModel();
+            Productos p = _unitOfWork.GetRepositoryInstance<Productos>().GetFirstOrDefaultByParameter(i => i.id == id);
             if (Session["carrito"] == null)
             {
                 List<CarritoModel> carrito = new List<CarritoModel>();
-                Productos p = _unitOfWork.GetRepositoryInstance<Productos>().GetFirstOrDefaultByParameter(i => i.id == id);
                 if (p != null)
                 {
                     item.Id_producto = p.id;
@@ -51,7 +51,7 @@ namespace Final_Ecommerce.Controllers
                 }
                 else
                 {
-                    Productos p = _unitOfWork.GetRepositoryInstance<Productos>().GetFirstOrDefaultByParameter(i => i.id == id);
+                    //Productos p = _unitOfWork.GetRepositoryInstance<Productos>().GetFirstOrDefaultByParameter(i => i.id == id);
                     if (p != null)
                     {
                         item.Id_producto = p.id;
@@ -64,6 +64,9 @@ namespace Final_Ecommerce.Controllers
                 }
                 Session["carro"] = carrito;
             }
+            int n = p.cantidad - 1;
+            p.cantidad = n;
+            _unitOfWork.GetRepositoryInstance<Productos>().Update(p);
             return RedirectToAction("AllProductos", "Productos");
         }
 
@@ -82,6 +85,11 @@ namespace Final_Ecommerce.Controllers
         {
             List<CarritoModel> carrito = (List<CarritoModel>)Session["carrito"];
             int index = ExisteProducto(id);
+            CarritoModel m = carrito.FindLast(i => i.Id_producto == id);
+            Productos product = _unitOfWork.GetRepositoryInstance<Productos>().GetFirstOrDefaultByParameter(i => i.id == id);
+            int n = product.cantidad + m.Cantidad;
+            product.cantidad = n;
+            _unitOfWork.GetRepositoryInstance<Productos>().Update(product);
             carrito.RemoveAt(index);
             Session["carrito"] = carrito;
             return RedirectToAction("Carrito");

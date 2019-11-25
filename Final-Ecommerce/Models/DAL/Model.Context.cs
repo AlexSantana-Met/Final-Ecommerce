@@ -34,7 +34,7 @@ namespace Final_Ecommerce.Models.DAL
         public virtual DbSet<Proveedores> Proveedores { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<Tipo_Pago> Tipo_Pago { get; set; }
-        public virtual DbSet<Usuarios> Usuarios { get; set; }
         public virtual DbSet<Ventas> Ventas { get; set; }
+        public virtual DbSet<Usuarios> Usuarios { get; set; }
     }
 }

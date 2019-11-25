@@ -25,6 +25,7 @@ namespace Final_Ecommerce.Models
         [Required]
         [EmailAddress]
         [Display(Name = "Correo electrónico*")]
+        [StringLength(50, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 6)]
         public string correo { get; set; }
         [Required]
         [DataType(DataType.Password)]
@@ -37,10 +38,9 @@ namespace Final_Ecommerce.Models
         public string confpass { get; set; }
         public int stat { get; set; }
         public int role_id { get; set; }
-        
         [DataType(DataType.Date)]
         [Display(Name = "Fecha de nacimiento")]
-        public Nullable<System.DateTime> fecha_nacimiento { get; set; }
+        public DateTime? fecha_nacimiento { get; set; }
         [Display(Name = "Teléfono")]
         public string telefono { get; set; }
         [Required]
