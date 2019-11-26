@@ -54,16 +54,16 @@ namespace Final_Ecommerce.Controllers
                     newUser.correo = model.correo;
                     newUser.username = model.username;
                     newUser.role_id = 1;
-                    newUser.telefono = model.telefono;
                     newUser.nombre = model.nombre;
                     newUser.apellido_paterno = model.apellido_paterno;
                     newUser.apellido_materno = model.apellido_materno;
 
                     Session["usr"] = newUser;
 
+                    newUser.telefono = model.telefono;
                     newUser.pass = model.pass;
                     newUser.status = 1;
-                    
+
 
                     newUser.fecha_nacimiento = model.fecha_nacimiento;
                     _unitOfWork.GetRepositoryInstance<Usuarios>().Add(newUser);
@@ -108,5 +108,50 @@ namespace Final_Ecommerce.Controllers
                 _signInManager = value;
             }
         }
+
+        public ActionResult Perfil()
+        {
+            Usuarios current = (Usuarios)Session["usr"];
+            Usuarios u = _unitOfWork.GetRepositoryInstance<Usuarios>().GetFirstOrDefaultByParameter(i => i.id == current.id);
+
+            UsuarioModelEdit model = new UsuarioModelEdit()
+            {
+                id = u.id,
+                apellido_materno = u.apellido_materno,
+                apellido_paterno = u.apellido_paterno,
+                nombre = u.nombre,
+                username = u.username,
+                telefono = u.telefono,
+                fecha_nacimiento = u.fecha_nacimiento,
+                correo = u.correo
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult EditarPerfil(UsuarioModelEdit model)
+        {
+            if (ModelState.IsValid)
+            {
+                Usuarios newUser = _unitOfWork.GetRepositoryInstance<Usuarios>().GetFirstOrDefaultByParameter(i => i.id == model.id);
+                
+                //newUser.correo = model.correo;
+                newUser.username = model.username;
+                newUser.nombre = model.nombre;
+                newUser.apellido_paterno = model.apellido_paterno;
+                newUser.apellido_materno = model.apellido_materno;
+
+                Session["usr"] = newUser;
+
+                newUser.telefono = model.telefono;
+                newUser.fecha_nacimiento = model.fecha_nacimiento;
+                _unitOfWork.GetRepositoryInstance<Usuarios>().Update(newUser);
+                Session["secc"] = "Se han guardado correctamente los datos.";
+            }
+            return RedirectToAction("Perfil");
+        }
+
+
     }
 }

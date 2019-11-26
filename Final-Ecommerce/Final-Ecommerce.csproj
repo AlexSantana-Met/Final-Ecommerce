@@ -270,6 +270,8 @@
     <Content Include="images\img1-e.jpg" />
     <Content Include="images\img2-e.jpg" />
     <Content Include="images\img3-e.jpg" />
+    <Content Include="images\Logo5.png" />
+    <Content Include="images\Logo6.png" />
     <Content Include="Models\DAL\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
@@ -378,6 +380,7 @@
     <Content Include="Views\Compras\DetalleCompra.cshtml" />
     <Content Include="Views\Payment\FailureView.cshtml" />
     <Content Include="Views\Payment\SuccessView.cshtml" />
+    <Content Include="Views\Usuarios\Perfil.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

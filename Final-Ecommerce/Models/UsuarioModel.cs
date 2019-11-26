@@ -48,4 +48,36 @@ namespace Final_Ecommerce.Models
         [Display(Name = "Nombre de usuario*")]
         public string username { get; set; }
     }
+
+    public class UsuarioModelEdit
+    {
+        [Required]
+        public int id { get; set; }
+        [Required]
+        [StringLength(30, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 2)]
+        [Display(Name = "Nombre*")]
+        public string nombre { get; set; }
+        [Required]
+        [StringLength(30, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 2)]
+        [Display(Name = "Apellido Paterno*")]
+        public string apellido_paterno { get; set; }
+        [Required]
+        [StringLength(30, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 2)]
+        [Display(Name = "Apellido Materno*")]
+        public string apellido_materno { get; set; }
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Correo electrónico*")]
+        [StringLength(50, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 6)]
+        public string correo { get; set; }
+        [DataType(DataType.Date)]
+        [Display(Name = "Fecha de nacimiento")]
+        public DateTime? fecha_nacimiento { get; set; }
+        [Display(Name = "Teléfono")]
+        public string telefono { get; set; }
+        [Required]
+        [StringLength(20, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 6)]
+        [Display(Name = "Nombre de usuario*")]
+        public string username { get; set; }
+    }
 }

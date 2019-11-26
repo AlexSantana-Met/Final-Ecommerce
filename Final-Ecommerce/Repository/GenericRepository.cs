@@ -28,7 +28,6 @@ namespace Final_Ecommerce.Repository
             }
             catch (Exception ex)
             {
-                Console.Write("");
             }
             
         }
