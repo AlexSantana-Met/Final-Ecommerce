@@ -1,4 +1,5 @@
 ﻿using Final_Ecommerce.Models;
+using Final_Ecommerce.Models.DAL;
 using Final_Ecommerce.Repository;
 using PayPal.Api;
 using System;
@@ -12,6 +13,9 @@ namespace Final_Ecommerce.Controllers
     [Authorize]
     public class PaymentController : Controller
     {
+
+        public GenericUnitToWork _unitOfWork = new GenericUnitToWork();
+
         // GET: Pago
         public ActionResult PaymentWithPayPal(string Cancel = null)
         {
@@ -27,7 +31,7 @@ namespace Final_Ecommerce.Controllers
                 if (string.IsNullOrEmpty(PayerId))
                 {
                     string baseURI = Request.Url.Scheme + "://" + Request.Url.Authority
-                        + "PaymentWithPayPal/PaymentWithPayPal?";
+                        + "/Payment/PaymentWithPayPal?";
                     var guid = Convert.ToString((new Random()).Next(100000));
                     var createdPayment = this.CreatePayment(apiContext, baseURI + "guid=" + guid);
 
@@ -50,23 +54,24 @@ namespace Final_Ecommerce.Controllers
                     var guid = Request.Params["guid"];
                     var executePayment = ExecutePayment(apiContext, PayerId, Session[guid] as string);
 
-                    if (executePayment.ToString().ToLower() != "approved")
+                    if (executePayment.state.ToLower() != "approved")
                     {
+                        ViewBag.ErrorMessage = executePayment.failure_reason;
                         return View("FailureView");
                     }
                 }
-
             }
             catch (Exception e)
             {
                 return View("FailureView");
             }
+            RegistraVenta();
             return View("SuccessView");
         }
 
         private PayPal.Api.Payment payment;
 
-        private object ExecutePayment(APIContext apiContext, string payerId, string paymentId)
+        private Payment ExecutePayment(APIContext apiContext, string payerId, string paymentId)
         {
             var paymentExecution = new PaymentExecution() { payer_id = payerId };
             this.payment = new Payment() { id = paymentId };
@@ -83,7 +88,7 @@ namespace Final_Ecommerce.Controllers
                 i.currency = "MXN";
                 i.price = item.Precio_venta.ToString();
                 i.quantity = item.Cantidad.ToString();
-                i.sku = "sku";
+                i.sku = item.Id_producto.ToString();
                 itemsPayPal.Add(i);
             }
 
@@ -119,7 +124,7 @@ namespace Final_Ecommerce.Controllers
             transactionList.Add(new Transaction()
             {
                 description = "Transaction Description",
-                invoice_number = "#100000",
+                invoice_number = "#" + Convert.ToString((new Random()).Next(100000)),
                 amount = amount,
                 item_list = ItemList
             });
@@ -145,5 +150,50 @@ namespace Final_Ecommerce.Controllers
             return View();
         }
 
+        public void RegistraVenta()
+        {
+            List<CarritoModel> carrito = (List<CarritoModel>)Session["carrito"];
+            Ventas venta = new Ventas();
+            //List< Detalle_Ventas> detalles = new List<Detalle_Ventas>();
+            Detalle_Ventas detalle = new Detalle_Ventas();
+            //List<Ventas> u = _unitOfWork.GetRepositoryInstance<Ventas>().GetAllRecords().ToList();
+            Ventas lastVenta = _unitOfWork.GetRepositoryInstance<Ventas>().GetLastRecord();
+
+            if (lastVenta != null)
+            {
+                venta.id = lastVenta.id + 1;
+            }
+
+            venta.fecha = DateTime.Today;
+            venta.id_usuario = ((Usuarios)Session["usr"]).id;
+            venta.iva = 0;
+            venta.sub_total = carrito.Sum(i => i.Cantidad * i.Precio_venta);
+            venta.total = venta.sub_total;
+
+            _unitOfWork.GetRepositoryInstance<Ventas>().Add(venta);
+
+            foreach (CarritoModel item in carrito)
+            {
+                Detalle_Ventas d = _unitOfWork.GetRepositoryInstance<Detalle_Ventas>().GetLastRecord();
+                if (d != null)
+                {
+                    detalle.id = d.id + 1;
+                }
+
+                detalle.id_producto = item.Id_producto;
+                detalle.precio_venta = item.Precio_venta;
+                detalle.precio_compra = _unitOfWork.GetRepositoryInstance<Productos>().GetFirstOrDefaultByParameter(i => i.id == item.Id_producto).precio_compra;
+                detalle.stat = 1;
+                detalle.id_venta = venta.id;
+                detalle.cantidad = item.Cantidad;
+
+                _unitOfWork.GetRepositoryInstance<Detalle_Ventas>().Add(detalle);
+                detalle = new Detalle_Ventas();
+            }
+
+            Session["carrito"] = null;
+
+        }
     }
+
 }
