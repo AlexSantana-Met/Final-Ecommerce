@@ -40,7 +40,7 @@ namespace Final_Ecommerce.Controllers
                 CarritoModel c = new CarritoModel();
                 c.Cantidad = item.cantidad;
                 c.Precio_venta = item.precio_venta;
-                Productos p = _unitToWork.GetRepositoryInstance<Productos>().GetFirstOrDefaultByParameter(i => i.id == item.id);
+                Productos p = _unitToWork.GetRepositoryInstance<Productos>().GetFirstOrDefaultByParameter(i => i.id == item.id_producto);
                 c.Nombre = p.nombre;
                 c.Img = p.img;
                 c.Id_producto = p.id;

@@ -50,6 +50,18 @@
                                             @Html.ValidationMessageFor(m => m.apellido_paterno, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
+                                    @*@Html.DropDownListFor(
+                                       m => m.role_id,
+                                           new SelectList(
+                                               new List<Object> {
+                                                   new { value = 3, text= "Ventas"},
+                                                   new { value = 4, text= "Compras"},
+                                                   new { value = 5, text= "Embarque"}
+                                               },
+                                               "value",
+                                               "text"
+                                               )
+                                           )*@
                                 </div>
                             </div>
                         </div>

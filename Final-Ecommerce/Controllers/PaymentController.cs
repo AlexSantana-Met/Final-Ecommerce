@@ -175,6 +175,7 @@ namespace Final_Ecommerce.Controllers
             foreach (CarritoModel item in carrito)
             {
                 Detalle_Ventas d = _unitOfWork.GetRepositoryInstance<Detalle_Ventas>().GetLastRecord();
+
                 if (d != null)
                 {
                     detalle.id = d.id + 1;
@@ -188,6 +189,14 @@ namespace Final_Ecommerce.Controllers
                 detalle.cantidad = item.Cantidad;
 
                 _unitOfWork.GetRepositoryInstance<Detalle_Ventas>().Add(detalle);
+
+                Productos p = _unitOfWork.GetRepositoryInstance<Productos>().GetFirstOrDefaultByParameter(i => i.id == item.Id_producto);
+                int cantidad = p.cantidad - item.Cantidad;
+
+                p.cantidad = cantidad;
+
+                _unitOfWork.GetRepositoryInstance<Productos>().Update(p);
+
                 detalle = new Detalle_Ventas();
             }
 

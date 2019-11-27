@@ -46,7 +46,7 @@
                 </div>
                 <div class="col-lg-6 " style="height: 6rem; margin: 30px 0 !important;">
                     @*<span style="background-color: transparent; color: white; font-size: 6rem; margin: auto;">LOGO</span>*@
-                    <img src="~/images/Logo6.png" alt="LOGO" style="max-height: 100%;"/>
+                    <img src="~/images/Logo6.png" alt="LOGO" style="max-height: 100%;" />
                 </div>
                 @*if (Request.IsAuthenticated)*@
                 @{
@@ -115,8 +115,22 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/funcShop.js"></script>
     @RenderSection("scripts", required: false)
     <script>
+
+        window.onload = function () {
+            nobackbutton();
+        };
+
+        function nobackbutton() {
+            window.location.hash = "no-back-button";
+            window.location.hash = "Again-No-back-button"; //chrome
+            window.onhashchange = function () {
+                window.location.hash = "no-back-button";
+            };
+        }
+
         $(document).ready(function () {
             $("#my-input-search").on("keyup", function () {
                 var value = $(this).val().toLowerCase();

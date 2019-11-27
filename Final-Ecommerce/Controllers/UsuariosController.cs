@@ -135,7 +135,6 @@ namespace Final_Ecommerce.Controllers
             if (ModelState.IsValid)
             {
                 Usuarios newUser = _unitOfWork.GetRepositoryInstance<Usuarios>().GetFirstOrDefaultByParameter(i => i.id == model.id);
-                
                 //newUser.correo = model.correo;
                 newUser.username = model.username;
                 newUser.nombre = model.nombre;

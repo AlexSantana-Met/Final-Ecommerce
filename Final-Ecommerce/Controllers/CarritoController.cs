@@ -47,6 +47,11 @@ namespace Final_Ecommerce.Controllers
                 int index = ExisteProducto(id);
                 if (index != -1)
                 {
+                    if (carrito[index].Cantidad + 1 > p.cantidad)
+                    {
+                        Session["error"] = "No se puede agregar al carrito, la tienda no cuenta con suficiente cantidad de este producto.";
+                        return RedirectToAction("InfoProducto", "Productos", new { id });
+                    }
                     carrito[index].Cantidad++;
                 }
                 else
@@ -64,10 +69,11 @@ namespace Final_Ecommerce.Controllers
                 }
                 Session["carro"] = carrito;
             }
-            int n = p.cantidad - 1;
-            p.cantidad = n;
-            _unitOfWork.GetRepositoryInstance<Productos>().Update(p);
-            return RedirectToAction("AllProductos", "Productos");
+            //int n = p.cantidad - 1;
+            //p.cantidad = n;
+            //_unitOfWork.GetRepositoryInstance<Productos>().Update(p);
+            Session["success"] = "Se ha agregado al carrito exitosamente.";
+            return RedirectToAction("InfoProducto", "Productos", new { id });
         }
 
         public int ExisteProducto(int id)
@@ -85,11 +91,11 @@ namespace Final_Ecommerce.Controllers
         {
             List<CarritoModel> carrito = (List<CarritoModel>)Session["carrito"];
             int index = ExisteProducto(id);
-            CarritoModel m = carrito.FindLast(i => i.Id_producto == id);
-            Productos product = _unitOfWork.GetRepositoryInstance<Productos>().GetFirstOrDefaultByParameter(i => i.id == id);
-            int n = product.cantidad + m.Cantidad;
-            product.cantidad = n;
-            _unitOfWork.GetRepositoryInstance<Productos>().Update(product);
+            //CarritoModel m = carrito.FindLast(i => i.Id_producto == id);
+            //Productos product = _unitOfWork.GetRepositoryInstance<Productos>().GetFirstOrDefaultByParameter(i => i.id == id);
+            //int n = product.cantidad + m.Cantidad;
+            //product.cantidad = n;
+            //_unitOfWork.GetRepositoryInstance<Productos>().Update(product);
             carrito.RemoveAt(index);
             Session["carrito"] = carrito;
             return RedirectToAction("Carrito");
