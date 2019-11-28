@@ -82,6 +82,7 @@ namespace Final_Ecommerce.Repository
             if (_DBEntity.Entry(entidad).State == EntityState.Detached)
                 _dbSet.Attach(entidad);
             _dbSet.Remove(entidad);
+            _DBEntity.SaveChanges();
         }
 
         public void RemoveByWhereClause(Expression<Func<Entidad, bool>> wherePredict)
