@@ -97,7 +97,16 @@ namespace Final_Ecommerce.Controllers
             //product.cantidad = n;
             //_unitOfWork.GetRepositoryInstance<Productos>().Update(product);
             carrito.RemoveAt(index);
-            Session["carrito"] = carrito;
+
+            Session["carrito"] = carrito.Count() > 0 ? carrito : null;
+            //if (carrito.Count() > 0)
+            //{
+            //    Session["carrito"] = carrito;
+            //}
+            //else
+            //{
+            //    Session["carrito"] = null;
+            //}
             return RedirectToAction("Carrito");
         }
 

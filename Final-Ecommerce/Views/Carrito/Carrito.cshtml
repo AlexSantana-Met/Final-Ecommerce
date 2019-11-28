@@ -87,14 +87,17 @@
                             <p style="font-weight: bold;">$ @total </p>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-2">
-                            <a href="@Url.Action("PaymentWithPayPal", "Payment")" class="btn btn-block btn-success" style="font-size:1.5rem;"> Proceder con el pago </a>
-                            @*<a href="#" class="btn btn-block btn-success" style="font-size:1.5rem;">
-            Proceder con el pago
-        </a>*@
+                    @if (Session["carrito"] != null)
+                    {
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2">
+                                <a href="@Url.Action("PaymentWithPayPal", "Payment")" class="btn btn-block btn-success" style="font-size:1.5rem;"> Proceder con el pago </a>
+                                @*<a href="#" class="btn btn-block btn-success" style="font-size:1.5rem;">
+                                        Proceder con el pago
+                                    </a>*@
+                            </div>
                         </div>
-                    </div>
+                    }
                     <br />
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2">
