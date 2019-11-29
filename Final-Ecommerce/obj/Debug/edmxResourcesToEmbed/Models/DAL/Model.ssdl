@@ -61,7 +61,7 @@
     </Key>
     <Property Name="id" Type="int" Nullable="false" />
     <Property Name="nombre" Type="varchar" MaxLength="30" Nullable="false" />
-    <Property Name="descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="500" Nullable="false" />
     <Property Name="id_categoria" Type="int" Nullable="false" />
     <Property Name="cantidad" Type="int" Nullable="false" />
     <Property Name="id_proveedor" Type="int" Nullable="false" />
